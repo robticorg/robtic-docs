@@ -1,0 +1,17 @@
+{
+  "name": "robtic-docs",
+  "private": true,
+  "description": "Robtic's documentation (docs.robtic.org): Discord bots, Hosting and your account. Markdown in content/, built to static HTML.",
+  "type": "module",
+  "scripts": {
+    "build": "bun build.ts",
+    "dev": "bun build.ts --watch",
+    "check": "bun build.ts --check"
+  },
+  "dependencies": {
+    "marked": "18.1.2"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.14"
+  }
+}

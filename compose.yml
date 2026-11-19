@@ -1,0 +1,15 @@
+# Portainer stack `robtic-docs`: docs.robtic.org. Nginx Proxy Manager forwards docs.robtic.org to http://robtic-docs:80
+# on the `proxy` network. The image is built by GitHub Actions (ghcr.io/robticorg/robtic-docs, private).
+name: robtic-docs
+services:
+  robtic-docs:
+    image: ghcr.io/robticorg/robtic-docs:${DOCS_IMAGE_TAG:-production}
+    container_name: robtic-docs
+    restart: unless-stopped
+    networks: [proxy]
+    logging:
+      driver: json-file
+      options: { max-size: "5m", max-file: "2" }
+networks:
+  proxy:
+    external: true
