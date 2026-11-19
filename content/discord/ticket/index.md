@@ -12,8 +12,9 @@ closed, a **transcript** is saved and can be sent to the member.
 
 1. [Add Robtic Ticket](/discord/dashboard) to your server.
 2. Open **Robtic Ticket → Settings**: language, support and manager roles, where transcripts go.
-3. [Build a panel](/discord/ticket/panels) and post it.
-4. **Save changes**.
+3. [Create a ticket panel](/discord/ticket/panels) and post it.
+4. [Set up transcripts](/discord/ticket/transcripts).
+5. **Save changes**.
 
 ![Ticket settings](/shots/ticket/settings.webp)
 

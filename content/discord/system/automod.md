@@ -21,7 +21,7 @@ AutoMod watches messages, edits and member names and acts the moment something b
 
 | Template | Stops |
 |---|---|
-| **Bad words** | Insults and swearing in Arabic and English — also disguised: `f.u.c.k`, `fuuuck`, `@` for a. |
+| **Bad words** | Insults and swearing in Arabic and English, including disguised spellings (spaced-out or repeated letters, symbols in place of letters). |
 | **Discord invites** | Invites to other servers (your own are allowed). |
 | **Links** | Any link, except the sites you allow. |
 | **Scam & phishing links** | Fake Nitro and Steam sites, crypto giveaway scams. |
@@ -30,6 +30,8 @@ AutoMod watches messages, edits and member names and acts the moment something b
 | **Caps & emoji spam** | Shouting in capitals, walls of emojis. |
 | **Bad names & profiles** | Offensive usernames and nicknames, on join and when changed. |
 | **Discord spam filter / word presets** | Discord's own spam detection and word lists (created as Discord AutoMod rules). |
+
+Robtic's official templates are **Protected**: their word lists are never shown — not on the dashboard, not in the library, and they can't be copied. They run only on the Robtic Engine.
 
 Each installed template has its own **actions**: remove the message, alert the log channel, and a punishment — warn,
 mute, timeout or jail — with a reason. Warns, mutes and jails are recorded as normal [moderation](/discord/system/moderation) cases.
@@ -44,7 +46,7 @@ mute, timeout or jail — with a reason. Warns, mutes and jails are recorded as 
 
 Press **New template** in **Library → Mine**. A short wizard walks you through **Basics → Words → Checks → Actions**.
 Words support Discord's wildcards: `word` (whole word), `word*` (starts with), `*word*` (anywhere). **Switch to
-advanced mode** for regex and *Robtic Rules* — plain-English rules with strikes and escalation.
+advanced mode** for regex and [Robtic Rules](/discord/system/rules) — plain-English rules with strikes and escalation.
 
 **Share a template:** open it and press **Copy link**. Anyone who manages a server can open the link and install it.
 Community templates are reviewed by Robtic before they appear in the public library.
