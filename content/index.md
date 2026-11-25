@@ -15,6 +15,7 @@ description: Guides for Robtic: Discord bots, Hosting and your Robtic account.
 - [Set up levels and level rewards](/discord/system/levels)
 - [Build a ticket panel](/discord/ticket/panels)
 - [Create a staff ladder with Robtic Staff](/discord/staff/setup)
+- [Write your first plugin in Robtic Rules](/rules/first-plugin)
 - [Deploy an app from GitHub](/hosting/github)
 - [Turn on two-factor authentication](/account/security)
 

@@ -14,6 +14,7 @@ const ICONS: Record<string, string> = {
     discord: '<path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>',
     server: '<rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+    code: '<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>',
     search: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
     menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
     left: '<path d="m15 18-6-6 6-6"/>',

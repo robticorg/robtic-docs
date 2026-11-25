@@ -143,3 +143,13 @@
         else if (e.key === 'Enter') { const a = $$('.search-item', results)[active]; if (a) { e.preventDefault(); location.href = a.href; } }
     });
 })();
+
+/* ---------------- code / preview tabs (```rrl settings blocks) */
+document.querySelectorAll('.tabs').forEach((box) => {
+    const buttons = [...box.querySelectorAll('.tabs-bar button')];
+    const panels = [...box.querySelectorAll('.tab-panel')];
+    buttons.forEach((b, i) => b.addEventListener('click', () => {
+        buttons.forEach((x, j) => { x.classList.toggle('on', i === j); x.setAttribute('aria-selected', String(i === j)); });
+        panels.forEach((p, j) => { p.hidden = i !== j; });
+    }));
+});

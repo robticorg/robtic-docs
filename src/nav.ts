@@ -37,6 +37,18 @@ export const PRODUCTS: Product[] = [
         ],
     },
     {
+        key: 'rules',
+        title: 'Robtic Rules',
+        blurb: 'The plain-English language for plugins and AutoMod rules: inputs, rules, messages and tests.',
+        icon: 'code',
+        groups: [
+            { title: 'Start here', pages: ['rules/index', 'rules/first-plugin', 'rules/basics'] },
+            { title: 'The language', pages: ['rules/inputs', 'rules/rules', 'rules/actions', 'rules/messages', 'rules/data', 'rules/commands', 'rules/expressions'] },
+            { title: 'Ship it', pages: ['rules/tests', 'rules/publishing'] },
+            { title: 'Reference', pages: ['rules/reference'] },
+        ],
+    },
+    {
         key: 'account',
         title: 'Account',
         blurb: 'Your Robtic account: sign-in, security and connections.',

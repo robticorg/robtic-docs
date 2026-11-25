@@ -8,6 +8,7 @@ import { dirname, join, relative } from 'node:path';
 import { Marked, type Tokens } from 'marked';
 import { PRODUCTS } from './src/nav.ts';
 import { docPage, homePage, ORIGIN, urlOf, type Heading, type PageMeta } from './src/layout.ts';
+import { discordPreview, highlightRrl, pluginName, settingsPreview } from './src/rrl.ts';
 
 const ROOT = import.meta.dir;
 const CONTENT = join(ROOT, 'content');
@@ -86,6 +87,18 @@ function render(page: Page, problems: string[], known: Set<string>): { html: str
                 if (!m) return `<blockquote>${inner}</blockquote>`;
                 const kind = m[1]!.toLowerCase();
                 return `<div class="callout ${kind}"><div class="callout-h">${m[1]}</div>${inner.replace(m[0], '<p>')}</div>`;
+            },
+            // ```rrl is highlighted; ```rrl settings adds the settings page its inputs draw; ```discord draws a message.
+            code(t: Tokens.Code) {
+                const [lang, extra] = (t.lang ?? '').split(/\s+/);
+                const plain = t.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                if (lang === 'discord') return discordPreview(t.text);
+                if (lang !== 'rrl') return `<pre><code${lang ? ` class="language-${lang}"` : ''}>${plain}</code></pre>\n`;
+                const pre = `<pre class="rrl"><code>${highlightRrl(t.text)}</code></pre>`;
+                const preview = extra === 'settings' ? settingsPreview(t.text, pluginName(t.text)) : '';
+                if (extra === 'settings' && !preview) problems.push(`${page.path}: an rrl settings block has no inputs`);
+                if (!preview) return `${pre}\n`;
+                return `<div class="tabs"><div class="tabs-bar" role="tablist"><button role="tab" aria-selected="true" class="on">Code</button><button role="tab" aria-selected="false">Settings page</button></div><div class="tab-panel">${pre}</div><div class="tab-panel" hidden>${preview}</div></div>\n`;
             },
             table(this: unknown, t: Tokens.Table) {
                 const cell = (c: Tokens.TableCell) => (c as unknown as { text: string }).text;
