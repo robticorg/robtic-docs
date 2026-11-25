@@ -3,6 +3,9 @@ title: Robtic Rules language
 description: Write your own AutoMod rules in plain English: conditions, actions, strikes and escalation.
 ---
 
+> **Tip** This page covers AutoMod's rules. Plugins use the full language, with settings, commands, stored data
+> and tests: see [Robtic Rules](/rules).
+
 Robtic Rules is the language behind AutoMod's **advanced mode**. A rule reads like a sentence: *when* something happens,
 *if* these conditions are true, *then* do these things. Rules run on the Robtic Engine and are checked as you type.
 
