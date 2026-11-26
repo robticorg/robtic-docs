@@ -1,9 +1,17 @@
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { PRODUCTS, productOf, type Product } from './nav.ts';
 
 // The page shell: top bar (logo, products, search), sidebar for the current product, the article, and "On this page".
 // Plain HTML + one stylesheet + one small script (search, mobile menu, copy buttons, the active heading).
 
 export const ORIGIN = 'https://docs.robtic.org';
+
+// Cloudflare keeps /assets for a week, so each asset URL carries a hash of its content: a deploy that changes a file changes its URL.
+const ASSETS = join(import.meta.dir, '..', 'public', 'assets');
+const version = (f: string) => createHash('sha256').update(readFileSync(join(ASSETS, f))).digest('hex').slice(0, 10);
+const asset = (f: string) => `/assets/${f}?v=${version(f)}`;
 
 export interface PageMeta { path: string; url: string; title: string; description: string }
 export interface Heading { level: number; id: string; text: string }
@@ -54,7 +62,7 @@ function shell(meta: PageMeta, body: string, opts: { product: Product | null; bo
 <meta name="theme-color" content="#070b14">
 <link rel="icon" href="/assets/logo.png">
 <link rel="preload" href="/assets/assistant.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/assets/docs.css">
+<link rel="stylesheet" href="${asset('docs.css')}">
 </head>
 <body class="${opts.bodyClass ?? ''}">
 <a class="skip" href="#main">Skip to content</a>
@@ -75,7 +83,7 @@ ${body}
         <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> to move</span><span><kbd>Enter</kbd> to open</span><span><kbd>Esc</kbd> to close</span></div>
     </div>
 </div>
-<script src="/assets/docs.js" defer></script>
+<script src="${asset('docs.js')}" defer></script>
 </body>
 </html>
 `;
